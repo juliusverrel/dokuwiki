@@ -446,8 +446,8 @@ class admin_plugin_acl extends DokuWiki_Admin_Plugin {
             if($ns){
                 if($perm >= AUTH_DELETE) $names[] = $this->getLang('acl_perm16');
                 if($perm >= AUTH_UPLOAD) $names[] = $this->getLang('acl_perm8');
-                if($perm >= AUTH_CREATE) $names[] = $this->getLang('acl_perm4');
-            }
+            }    
+            if($perm >= AUTH_CREATE) $names[] = $this->getLang('acl_perm4');
             if($perm >= AUTH_EDIT) $names[] = $this->getLang('acl_perm2');
             if($perm >= AUTH_READ) $names[] = $this->getLang('acl_perm1');
             $names = array_reverse($names);
@@ -731,7 +731,7 @@ class admin_plugin_acl extends DokuWiki_Admin_Plugin {
                            'value' => $perm );
             //dynamic attributes
             if(!is_null($setperm) && $setperm == $perm) $atts['checked']  = 'checked';
-            if($ispage && $perm > AUTH_EDIT){
+            if($ispage && $perm > AUTH_CREATE){
                 $atts['disabled'] = 'disabled';
                 $class = ' class="disabled"';
             }else{
